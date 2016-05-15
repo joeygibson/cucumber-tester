@@ -1,6 +1,10 @@
 # cucumber-turnip-tester
 
-Provides a base Docker Image for testing using Turnip and Cucumber
+Provides a base Docker Image for testing using [Cucumber](https://cucumber.io) and
+[Turnip](https://github.com/jnicklas/turnip).
+
+A great deal of this was shamelessly lifted from work that [Mike Luu](https://github.com/munkyboy),
+[Paul Cichonski](https://github.com/paulcichonski), and, to a degree, I, did for our employer.
 
 ## Building
 
