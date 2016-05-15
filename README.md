@@ -34,3 +34,6 @@ To use this image in your repo, you should add something like the following `doc
 
     docker-compose run --rm bbtest
     docker-compose kill
+## Todo
+
+* Full Turnip support
