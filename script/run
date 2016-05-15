@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker run -it -v $(pwd):/opt/project -w /opt/project cucumber-turnip-tester $*

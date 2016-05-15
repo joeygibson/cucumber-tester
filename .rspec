@@ -1,0 +1,5 @@
+--color
+--format documentation
+--require turnip_formatter
+--format RSpecTurnipFormatter
+--out test-reports/smoketest-report.html
