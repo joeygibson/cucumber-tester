@@ -1,5 +1,7 @@
 # cucumber-turnip-tester
 
+[![Build Status](https://travis-ci.org/joeygibson/cucumber-turnip-tester.svg?branch=master)](https://travis-ci.org/joeygibson/cucumber-turnip-tester)
+
 Provides a base Docker Image for testing using [Cucumber](https://cucumber.io) and
 [Turnip](https://github.com/jnicklas/turnip).
 
