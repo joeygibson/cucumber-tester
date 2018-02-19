@@ -1,25 +1,31 @@
 FROM jruby:9
 
 RUN apt-get update && \
-    apt-get install -y netcat && \
+    apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg2 \
+    software-properties-common netcat && \
+    curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | apt-key add - && \
+    add-apt-repository \
+    "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") \
+    $(lsb_release -cs) \
+    stable" && \
+    apt-get update && \
+    apt-get install -y docker-ce docker-compose && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 RUN jruby -S gem install \
-    cucumber:2.4.0 \
-    turnip:2.1.1 \
-    turnip_formatter:0.5.0
+    cucumber:3.1.0 \  
+    turnip:3.1.0 \
+    turnip_formatter:0.7.0
 
-ENV DOCKER_VERSION 1.13.0
-RUN curl -so /usr/bin/docker https://get.docker.com/builds/Linux/x86_64/docker-$DOCKER_VERSION
-RUN chmod a+x /usr/bin/docker
+# cucumber:2.4.0 \
 
-ENV DOCKER_COMPOSE_VERSION=1.11.0
-RUN curl -Lo /usr/local/bin/docker-compose https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-Linux-x86_64
-RUN chmod a+x /usr/local/bin/docker-compose
-
-RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64.deb
-RUN dpkg -i dumb-init_*.deb
+RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64.deb
+RUN dpkg -i dumb-init_*.deb && rm dumb-init_*.deb
 
 ## default .rpsec configs
 COPY ./.rspec /root/.rspec

@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker build -t cucumber-turnip-tester .
+docker build -t cucumber-tester .
