@@ -44,4 +44,4 @@ To use this image in your repo, you should add something like the following `doc
 ## Note
 
 * Turnip is still installed, but the main focus of this image is cucumber.
-* 
+
