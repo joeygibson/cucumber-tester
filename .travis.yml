@@ -7,8 +7,8 @@ services:
 
 before_install:
   - docker build -t joeygibson/cucumber-turnip-tester:latest .
-  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker push joeygibson/cucumber-turnip-tester:latest
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+  - docker push joeygibson/cucumber-tester:latest
 
 script:
   - /bin/true
