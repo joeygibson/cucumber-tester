@@ -5,10 +5,14 @@ language: bash
 services:
   - docker
 
+jobs:
+  include: 
+    if TRAVIS_TAG != ""
+
 before_install:
-  - docker build -t joeygibson/cucumber-tester:latest .
+  - docker build -t joeygibson/cucumber-tester:"${TRAVIS_TAG}" .
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-  - docker push joeygibson/cucumber-tester:latest
+  - docker push joeygibson/cucumber-tester:"${TRAVIS_TAG}"
 
 script:
   - /bin/true
