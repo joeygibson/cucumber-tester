@@ -8,7 +8,7 @@ services:
 before_install:
   - docker build -t joeygibson/cucumber-tester:latest .
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-  - docker push joeygibson/cucumber-tester:latest
+  - docker push joeygibson/cucumber-tester:${TRAVIS_TAG:-latest}
 
 script:
   - /bin/true
