@@ -1,4 +1,4 @@
-FROM jruby:9
+FROM jruby:9.2
 
 RUN apt-get update && \
     apt-get install -y \
@@ -18,13 +18,13 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 RUN jruby -S gem install \
-    cucumber:3.1.0 \  
+    cucumber:3.2.0 \  
     turnip:3.1.0 \
     turnip_formatter:0.7.0
 
 # cucumber:2.4.0 \
 
-RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64.deb
+RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64.deb
 RUN dpkg -i dumb-init_*.deb && rm dumb-init_*.deb
 
 ## default .rpsec configs
@@ -35,6 +35,6 @@ COPY helpers /opt/helpers
 
 COPY bin/start.sh /opt/bin/start.sh
 
-WORKDIR /opt/project
+WORKDIR /project
 
 ENTRYPOINT ["/usr/bin/dumb-init", "/opt/bin/start.sh"]

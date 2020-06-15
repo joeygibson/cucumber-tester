@@ -25,16 +25,16 @@ To use this image in your repo, you should add something like the following `doc
     app:
         image: restygo
         volumes:
-        - .:/opt/project/
+        - .:/project/
     bbtest:
         image: cucumber-tester:latest
         links:
             - app
         volumes:
-            - .:/opt/project/
+            - .:/project/
             - /var/run/docker.sock:/var/run/docker.sock
-        working_dir: /opt/project
-        command: ["-r", "/opt/project/bbtest/features", "/opt/project/bbtest/features"]
+        working_dir: /project
+        command: ["-r", "/project/bbtest/features", "/project/bbtest/features"]
 
 ## Running
 
