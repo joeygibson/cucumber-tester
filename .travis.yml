@@ -1,5 +1,3 @@
-sudo: required
-
 language: bash
 
 services:
@@ -9,11 +7,5 @@ stages:
   - name: install  
     if: TRAVIS_TAG != ""
 
-before_install:
-  - docker build -t joeygibson/cucumber-tester .
-  - docker tag joeygibson/cucumber-tester joeygibson/cucumber-tester:$TRAVIS_TAG 
-  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-  - docker push joeygibson/cucumber-tester:$TRAVIS_TAG
+script: ./script/publish
 
-script:
-  - /bin/true
