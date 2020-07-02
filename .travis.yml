@@ -5,9 +5,9 @@ language: bash
 services:
   - docker
 
-jobs:
-  include: 
-    if TRAVIS_TAG != ""
+    # jobs:
+    # include: 
+    # if TRAVIS_TAG != ""
 
 before_install:
   - docker build -t joeygibson/cucumber-tester:"${TRAVIS_TAG}" .
